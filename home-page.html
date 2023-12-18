@@ -28,30 +28,35 @@
     <title>Document</title>
 </head>
 
-<body class="grid h-screen justify-center items-center ">
-    <div class="bg-[#25C863] px-[30px] py-[40px] lg:w-[350px] rounded-[10px] ">
-        <h2>Welcome back, <span id="usernamePlaceholder" class=" text-white"></span>!</h2>
-        <p>Account Number: <span id="accountNumberPlaceholder" class="text-[white]"></span></p>
+<body class="grid h-screen lg:justify-center md:justify-center items-center ">
+    <div
+        class="bg-[#25C863] px-[30px] py-[40px] lg:w-[350px] md:w-full w-full lg:h-auto md:h-auto h-full grid items-center rounded-[10px] ">
 
-        <div class=" grid gap-8" id="balanceContainer">
-            <p class=" font-bold">Your Balance: #<span id="balance">0</span></p>
-            <div class=" w-full">
-                <label class=" font-bold" for="amount">Enter Amount:</label>
-                <input class=" w-full h-[30px]" type="number" id="amount" required>
+        <div>
+            <h2>Welcome back, <span id="usernamePlaceholder" class=" text-white"></span>!</h2>
+            <p>Account Number: <span id="accountNumberPlaceholder" class="text-[white]"></span></p>
+
+            <div class=" grid gap-8" id="balanceContainer">
+                <p class=" font-bold">Your Balance: #<span id="balance">0</span></p>
+                <div class=" w-full">
+                    <label class=" font-bold" for="amount">Enter Amount:</label>
+                    <input class=" w-full h-[30px]" type="number" id="amount" required>
+                </div>
+
+                <div class=" flex items-center justify-center gap-10">
+                    <button class=" font-bold" onclick="deposit()">Deposit</button>
+                    <button class=" font-bold" onclick="withdraw()">Withdraw</button>
+                </div>
+
+                <div class="flex items-center justify-center gap-10">
+                    <button class="font-bold" onclick="deleteAccount()">Delete Account</button>
+                    <button class="font-bold" onclick="LogIn('logOut')">Logout</button>
+                </div>
+
+
             </div>
-
-            <div class=" flex items-center justify-center gap-10">
-                <button class=" font-bold" onclick="deposit()">Deposit</button>
-                <button class=" font-bold" onclick="withdraw()">Withdraw</button>
-            </div>
-
-            <div class="flex items-center justify-center gap-10">
-                <button class="font-bold" onclick="deleteAccount()">Delete Account</button>
-                <button class="font-bold" onclick="LogIn('logOut')">Logout</button>
-            </div>
-
-
         </div>
+
     </div>
 
 </body>

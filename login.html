@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/bank.css">
+    <!-- <link rel="stylesheet" href="/bank.css"> -->
     <script>
         tailwind.config = {
             theme: {
@@ -28,39 +28,48 @@
     <title>Document</title>
 </head>
 
-<body class=" grid h-screen justify-center items-center ">
-
-    <div class="bg-[#25C863] px-[30px] py-[40px] lg:w-[350px] rounded-[10px] ">
-        <h2 class=" text-[24px] text-white">Login</h2>
-        <form class=" grid" id="loginForm">
-            <label for="username">Username:</label>
-            <input class=" px-2 outline-none border-none rounded-[10px] h-[30px]" type="text" id="username" required>
-            <label for="password">Password:</label>
-
-            <input class="px-2 outline-none border-none rounded-[10px] h-[30px] w-full" type="password" id="password"
-                minlength="5" maxlength="5" required>
-            <div class=" absolute flex justify-end">
-                <button
-                    class=" border-2 border-[black] relative rounded-full px-5 py-2 top-[83px] lg:left-[240px] md:left-[160px] left-[160px]"
-                    type="button" onclick="togglePasswordVisibility('password')"></button>
-
-            </div>
+<body class=" grid   h-screen lg:justify-center md:justify-center items-center">
 
 
-            <div class=" flex gap-5 py-10 justify-center items-center">
-                <button class=" bg-[white] text-[#25C863] px-[10px] py-[5px] rounded-[10px]" type="button"
-                    onclick="LogIn('signup')">Create
-                    Account</button>
-                <button type="button" onclick="login()">Login</button>
-            </div>
-            <div class=" flex justify-center items-center">
-                <p>Forgot password? <a class=" text-[blue]" href="forgot-password.html">Reset</a>.</p>
-            </div>
+    <div
+        class="bg-[#25C863] px-[30px] py-[40px] lg:w-[350px] md:w-[600px] md:w-full w-full lg:h-auto md:h-auto h-full grid items-center  rounded-[10px] ">
+
+        <div>
+            <h2 class=" text-[24px] text-white">Login</h2>
+            <form class=" grid" id="loginForm">
+                <label for="username">Username:</label>
+                <input class=" px-2 outline-none border-none rounded-[10px] h-[30px]" type="text" id="username"
+                    required>
+                <label for="password">Password:</label>
+
+                <input class="px-2 outline-none border-none rounded-[10px] h-[30px] w-full" type="password"
+                    id="password" minlength="5" maxlength="5" required>
+                <div class=" absolute flex justify-end">
+                    <button
+                        class=" border-2 border-[black] relative rounded-full px-5 py-2 top-[83px] lg:left-[240px] md:left-[130px] left-[300px]"
+                        type="button" onclick="togglePasswordVisibility('password')"></button>
+
+                </div>
+
+
+                <div class=" flex gap-5 py-10 justify-center items-center">
+                    <button class=" bg-[white] text-[#25C863] px-[10px] py-[5px] rounded-[10px]" type="button"
+                        onclick="LogIn('signup')">Create
+                        Account</button>
+                    <button type="button" onclick="login()">Login</button>
+                </div>
+                <div class=" flex justify-center items-center">
+                    <p>Forgot password? <a class=" text-[blue]" href="forgot-password.html">Reset</a>.</p>
+                </div>
 
 
 
-        </form>
+            </form>
+        </div>
+
     </div>
+
+
 
 
 
