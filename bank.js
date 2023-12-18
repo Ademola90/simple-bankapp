@@ -207,3 +207,34 @@ function deleteAccount() {
 //     // Redirect to the login page
 //     window.location.href = "login.html";
 // }
+
+
+// for password reset
+
+function resetPassword() {
+    const usernameOrEmailInput = document.getElementById("usernameOrEmail");
+    const usernameOrEmail = usernameOrEmailInput.value;
+
+    // Check if the username or email exists in local storage
+    const storedUser = localStorage.getItem(usernameOrEmail);
+
+    if (storedUser) {
+        // Generate a temporary password (for simplicity)
+        const temporaryPassword = generateTemporaryPassword();
+
+        // Update the stored user data with the temporary password
+        const user = JSON.parse(storedUser);
+        user.password = temporaryPassword;
+        localStorage.setItem(usernameOrEmail, JSON.stringify(user));
+
+        alert(`Your password has been reset. Your temporary password is: ${temporaryPassword}`);
+    } else {
+        alert("No account found with the entered username or email.");
+    }
+}
+
+function generateTemporaryPassword() {
+    // Generate a 5-digit random temporary password
+    const temporaryPassword = Math.floor(10000 + Math.random() * 90000);
+    return temporaryPassword.toString();
+}
