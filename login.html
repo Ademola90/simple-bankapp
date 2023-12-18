@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/bank.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+  </style>
+    <title>Document</title>
+</head>
+
+<body class=" grid h-screen justify-center items-center ">
+
+    <div class="bg-[#25C863] px-[30px] py-[40px] lg:w-[350px] rounded-[10px] ">
+        <h2 class=" text-[24px] text-white">Login</h2>
+        <form class=" grid" id="loginForm">
+            <label for="username">Username:</label>
+            <input class=" h-[30px]" type="text" id="username" required>
+            <label for="password">Password:</label>
+            <input class=" h-[30px]" type="password" id="password" minlength="5" maxlength="5" required>
+            <div class=" flex gap-5 py-10 justify-center items-center">
+                <button class=" bg-[white] text-[#25C863] px-[10px] py-[5px] rounded-[10px]" type="button"
+                    onclick="LogIn('signup')">Create
+                    Account</button>
+                <button type="button" onclick="login()">Login</button>
+            </div>
+
+        </form>
+    </div>
+
+
+
+</body>
+<script src="/bank.js"></script>
+
+</html>
