@@ -9,6 +9,9 @@ function LogIn(page) {
 
 }
 
+
+let generatedAccountNumber; // Declare a global variable
+
 function generateRandomAccountNumber() {
     // Generate a random 10-digit account number
     return Math.floor(1000000000 + Math.random() * 9000000000);
@@ -16,32 +19,70 @@ function generateRandomAccountNumber() {
 
 function generateAccountNumber() {
     const accountNumberInput = document.getElementById("accountNumber");
-    accountNumberInput.value = generateRandomAccountNumber();
+    generatedAccountNumber = generateRandomAccountNumber();
+    accountNumberInput.value = generatedAccountNumber;
 }
 
 function createAccount() {
     const usernameInput = document.getElementById("createUsername");
     const passwordInput = document.getElementById("createPassword");
-    const accountNumberInput = document.getElementById("accountNumber");
+
+    // Check if the account number is already generated
+    if (!generatedAccountNumber) {
+        // If not, generate it
+        generateAccountNumber();
+    }
 
     const username = usernameInput.value;
     const password = passwordInput.value;
-    const accountNumber = accountNumberInput.value;
+    const accountNumber = generatedAccountNumber; // Use the generated account number
 
     // Check if the username already exists in local storage
     const existingUser = localStorage.getItem(username);
     if (existingUser) {
         alert("You already have an account. Please login.");
     } else if (username && password && accountNumber) {
-        // Save username, password, and initial total amount in local storage
+        // Save username, password, account number, and initial total amount in local storage
         localStorage.setItem(username, JSON.stringify({ password, accountNumber, totalAmount: 0 }));
 
-        // Redirect to the login page
-        window.location.href = "login.html";
+        // Redirect to the login page with the username and account number as query parameters
+        window.location.href = `login.html?username=${username}&accountNumber=${accountNumber}`;
     } else {
         alert("Please fill in all the fields.");
     }
 }
+
+
+
+
+// function generateAccountNumber() {
+//     const accountNumberInput = document.getElementById("accountNumber");
+//     accountNumberInput.value = generateRandomAccountNumber();
+// }
+
+// function createAccount() {
+//     const usernameInput = document.getElementById("createUsername");
+//     const passwordInput = document.getElementById("createPassword");
+//     const accountNumberInput = document.getElementById("accountNumber");
+
+//     const username = usernameInput.value;
+//     const password = passwordInput.value;
+//     const accountNumber = accountNumberInput.value;
+
+//     // Check if the username already exists in local storage
+//     const existingUser = localStorage.getItem(username);
+//     if (existingUser) {
+//         alert("You already have an account. Please login.");
+//     } else if (username && password && accountNumber) {
+//         // Save username, password, and initial total amount in local storage
+//         localStorage.setItem(username, JSON.stringify({ password, accountNumber, totalAmount: 0 }));
+
+//         // Redirect to the login page
+//         window.location.href = "login.html";
+//     } else {
+//         alert("Please fill in all the fields.");
+//     }
+// }
 
 // function createAccount() {
 //     const usernameInput = document.getElementById("createUsername");
@@ -71,9 +112,12 @@ function createAccount() {
 function login() {
     const usernameInput = document.getElementById("username");
     const passwordInput = document.getElementById("password");
+    const accountNumber = document.getElementById("accountNumber");
 
     const username = usernameInput.value;
     const password = passwordInput.value;
+    const accountNumbers = passwordInput.value;
+
 
     // Check if the entered username exists in local storage
     const storedUser = localStorage.getItem(username);
@@ -124,25 +168,46 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
+
 function initHomePage() {
     const username = getQueryParam("username");
     const user = JSON.parse(localStorage.getItem(username));
 
     if (user) {
         document.getElementById("usernamePlaceholder").innerText = username;
+
+        // Check if the account number is stored in the user's data
+        if (user.accountNumber) {
+            document.getElementById("accountNumberPlaceholder").innerText = user.accountNumber;
+        } else {
+            // If the account number is not stored, you can display a message or leave it empty
+            document.getElementById("accountNumberPlaceholder").innerText = "Account number not available";
+        }
+
         document.getElementById("balance").innerText = user.totalAmount.toFixed(2);
     }
 }
 
-// function initHomePage() {
-//     const username = getQueryParam("username");
-//     document.getElementById("usernamePlaceholder").innerText = username;
-// }
+
+
+
 
 // function initHomePage() {
 //     const username = getQueryParam("username");
-//     document.getElementById("usernamePlaceholder").innerText = username;
+//     const accountNumber = getQueryParam("accountNumber");
+//     const user = JSON.parse(localStorage.getItem(username));
+//     const account = JSON.parse(localStorage.getItem(accountNumber));
+
+//     if (user) {
+//         document.getElementById("usernamePlaceholder").innerText = username;
+//         document.getElementById("accountNumberPlaceholder").innerText = account;
+//         document.getElementById("balance").innerText = user.totalAmount.toFixed(2);
+//     }
+
+
 // }
+
+
 
 function deposit() {
     const amountInput = document.getElementById("amount");
@@ -203,10 +268,6 @@ function deleteAccount() {
     }
 }
 
-// function logout() {
-//     // Redirect to the login page
-//     window.location.href = "login.html";
-// }
 
 
 // for password reset
