@@ -34,9 +34,18 @@
         <h2 class=" text-[24px] text-white">Login</h2>
         <form class=" grid" id="loginForm">
             <label for="username">Username:</label>
-            <input class=" h-[30px]" type="text" id="username" required>
+            <input class=" px-2 outline-none border-none rounded-[10px] h-[30px]" type="text" id="username" required>
             <label for="password">Password:</label>
-            <input class=" h-[30px]" type="password" id="password" minlength="5" maxlength="5" required>
+
+            <input class="px-2 outline-none border-none rounded-[10px] h-[30px] w-full" type="password" id="password"
+                minlength="5" maxlength="5" required>
+            <div class=" absolute flex justify-end">
+                <button class=" border-2 border-[black] relative rounded-full px-5 py-2 top-[83px] left-[240px]"
+                    type="button" onclick="togglePasswordVisibility('password')"></button>
+
+            </div>
+
+
             <div class=" flex gap-5 py-10 justify-center items-center">
                 <button class=" bg-[white] text-[#25C863] px-[10px] py-[5px] rounded-[10px]" type="button"
                     onclick="LogIn('signup')">Create

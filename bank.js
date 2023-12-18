@@ -238,3 +238,17 @@ function generateTemporaryPassword() {
     const temporaryPassword = Math.floor(10000 + Math.random() * 90000);
     return temporaryPassword.toString();
 }
+
+
+function togglePasswordVisibility(inputId) {
+    const passwordInput = document.getElementById(inputId);
+    const button = document.querySelector(`[onclick="togglePasswordVisibility('${inputId}')"]`);
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        button.textContent = "";
+    } else {
+        passwordInput.type = "password";
+        button.textContent = "";
+    }
+}

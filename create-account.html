@@ -34,9 +34,16 @@
         <h2 class=" text-[24px] text-[white]">Create Account</h2>
         <form class=" grid gap-2" id="createAccountForm">
             <label for="username">Username:</label>
-            <input class=" h-[30px] rounded-[10px]" type="text" id="createUsername" required>
+            <input class=" h-[30px] px-2 outline-none border-none rounded-[10px]" type="text" id="createUsername"
+                required>
             <label for="password">Password:</label>
-            <input class=" h-[30px] rounded-[10px]" type="password" id="createPassword" minlength="5" required>
+            <input class="px-2 outline-none border-none  h-[30px] rounded-[10px]" type="password" id="createPassword"
+                minlength="5" required>
+            <div class=" absolute flex justify-end">
+                <button class=" border-2 border-[black] relative rounded-full px-5 py-2 top-[107px] left-[240px]"
+                    type="button" onclick="togglePasswordVisibility('createPassword')"></button>
+
+            </div>
             <!-- <label for="accountNumber">Account Number:</label> -->
             <div class="grid justify-center items-center">
                 <button class=" text-center w-[150px] " type="button" onclick="generateAccountNumber()">Click here to
@@ -44,7 +51,8 @@
                     Number</button>
             </div>
 
-            <input class=" h-[30px] rounded-[10px]" type="text" id="accountNumber" readonly>
+            <input class=" px-2 outline-none border-none  h-[30px] rounded-[10px]" type="text" id="accountNumber"
+                readonly>
 
             <div class=" flex gap-5 justify-center items-center">
                 <button class=" bg-[white] text-[#25C863] px-[10px] py-[5px] rounded-[10px]" type="button"
